@@ -15,6 +15,10 @@ knitr::opts_chunk$set(
 img <- function(f) knitr::include_graphics(file.path("figures", f))
 ```
 
+```{r logo, echo = FALSE, eval = TRUE, out.width = "150px"}
+img("logo-hex.png")
+```
+
 What does synesthR *see* when it reads canonical literature? This worked example
 runs the full pipeline over three public-domain works — one per supported
 language — and then steps beyond the core into **sentiment**, **deep NRC
