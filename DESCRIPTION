@@ -1,0 +1,49 @@
+Package: synesthR
+Title: Generate Synchronized Images and Music from Literary Text
+Version: 0.1.0
+Authors@R: person("Raban", "Heller", email = "raban.heller@charite.de",
+    role = c("aut", "cre"), comment = c(ORCID = "0000-0001-8006-9742"))
+Description: Extracts linguistic features from literary text in German, English,
+    and French, including a sentence-level sentiment arc, lexical diversity,
+    rhythm, and punctuation density, and maps them deterministically onto
+    visual and musical parameters. From a single shared feature score it
+    renders a generative still image and a synchronized audio waveform, so
+    that the picture and the music are two views of the same analysis. Colour
+    palettes and 'ggplot2' themes can be extracted not only from text but from
+    images and audio through a common interface, and media objects (text,
+    image, audio, score) are passed between functions through a shared
+    interchange container. An optional assistive layer can interpret results
+    using a locally running large language model.
+License: MIT + file LICENSE
+URL: https://github.com/r-heller/synesthR, https://r-heller.github.io/synesthR/
+BugReports: https://github.com/r-heller/synesthR/issues
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Config/testthat/edition: 3
+Imports:
+    cli,
+    ggplot2,
+    rlang,
+    syuzhet,
+    tibble,
+    tokenizers,
+    tuneR
+Suggests:
+    cld3,
+    covr,
+    ellmer,
+    gganimate,
+    gm,
+    knitr,
+    magick,
+    music,
+    reticulate,
+    rmarkdown,
+    seewave,
+    shiny,
+    soundgen,
+    testthat (>= 3.0.0),
+    withr
+VignetteBuilder: knitr
+Config/Needs/website: CTTIR/themakR@a4e4805ac89194d766694bfc0ec544fa5517ac59

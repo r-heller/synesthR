@@ -1,0 +1,57 @@
+---
+title: "Design notes and extending synesthR (the rim)"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Design notes and extending synesthR (the rim)}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", eval = FALSE)
+```
+
+## The core / rim architecture
+
+synesthR has a **CRAN-hard core** and an **optional orchestration rim**.
+
+* **Core** — `read -> score -> map -> paint / play / palette / media`. Pure R,
+  deterministic given `(text, seed)`, no network, no external software. It must
+  pass `R CMD check --as-cran` on a machine with *every* optional package and
+  tool absent. The golden snapshot tests fix the numeric output of the mapping;
+  that is the package's reproducibility contract.
+* **Rim** — optional extensions that orchestrate external tools that *may* exist
+  on the user's machine: a local LLM (`ellmer`), Python (`reticulate`), and
+  command-line tools (`ffmpeg`, MuseScore). The rim may call the core; **the
+  core never calls the rim**. One-directional, absolute.
+
+Every rim function detects its dependency at call time and degrades with an
+informative message when it is missing — it never causes a core failure.
+
+## The rim guard pattern
+
+Rim authors reuse four internal helpers rather than hand-rolling detection:
+
+```{r}
+.check_tool("ffmpeg")                       # CLI binary on PATH -> path, else abort
+.check_pymod("numpy")                       # Python module via reticulate
+.check_client("ellmer", probe = my_probe)   # client package + reachable backend
+.run_tool("ffmpeg", args = c("-version"))   # system2 wrapper, surfaces exit codes
+```
+
+A new extension is then just: guard with the appropriate `.check_*`, do the
+work, return a useful result, and document the graceful-absence behaviour.
+
+## Enrichment never alters the core
+
+Optional extensions may *augment* a score (for example
+`syn_py_features()` attaches Python-computed valence dynamics to a separate
+`enrichment` slot) but never *alter* the deterministic core features or the
+mapping. The reproducibility snapshot is identical whether or not any optional
+tool is present.
+
+## Suggests discipline
+
+`cld3`, `ellmer`, `gganimate`, `gm`, `magick`, `music`, `reticulate`,
+`seewave`, `shiny`, and `soundgen` all live in `Suggests` only and are guarded
+with `requireNamespace()`. None ever migrates to `Imports`.

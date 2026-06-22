@@ -1,0 +1,15 @@
+:root { --syn-purple: #5E2C8E; }
+
+body { background: #faf8fd; }
+
+h1, .h1 { color: var(--syn-purple); font-weight: 700; letter-spacing: 0.5px; }
+
+.btn-primary {
+  background-color: var(--syn-purple);
+  border-color: var(--syn-purple);
+}
+.btn-primary:hover { background-color: #4a2270; border-color: #4a2270; }
+
+.well, .sidebar { border-left: 3px solid var(--syn-purple); }
+
+h4 { color: var(--syn-purple); }

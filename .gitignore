@@ -1,0 +1,9 @@
+.roadmap/
+.claude/
+CLAUDE.md
+CLAUDE_CODE_*.md
+DROPHERE/
+synesthR-ROADMAP.md
+synesthR-RIM-RESEARCH.md
+docs/
+pkgdown/

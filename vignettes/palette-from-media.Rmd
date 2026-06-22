@@ -1,0 +1,59 @@
+---
+title: "From image or audio to palette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{From image or audio to palette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+```{r setup}
+library(synesthR)
+```
+
+`syn_palette()` is a generic: it derives the *same* `syn_palette` object from a
+prosody score, a character string, an audio `Wave`, or an image. That makes
+palettes interchangeable across sources.
+
+## From text
+
+```{r}
+syn_palette("A warm and joyful golden afternoon.", lang = "en")
+```
+
+## From audio
+
+Any `tuneR::Wave` works — including the audio synesthR itself generates. The
+palette's temperature follows the spectral brightness of the sound (computed
+with base R, no extra dependency):
+
+```{r}
+w <- tuneR::sine(660, duration = 8000, samp.rate = 8000, bit = 16, pcm = TRUE)
+syn_palette(w)
+```
+
+## From an image (optional)
+
+The image method uses the optional `magick` package. It downsamples, clusters
+colours in Lab space, and orders them by luminance. It runs only when `magick`
+is installed:
+
+```{r, eval = requireNamespace("magick", quietly = TRUE)}
+img <- magick::image_blank(80, 80, color = "tomato")
+syn_palette(img)
+```
+
+If `magick` is not installed the method aborts with an informative message
+rather than failing the core workflow.
+
+## Turning a palette into a theme
+
+```{r}
+pal <- syn_palette(syn_score(syn_read_text("Quiet grey morning by the sea.", lang = "en")))
+th <- syn_theme(pal)
+class(th)
+```

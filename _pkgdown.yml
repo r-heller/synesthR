@@ -1,0 +1,59 @@
+url: https://r-heller.github.io/synesthR/
+
+# Inherit the CTTIR suite design (Hugo Coder palette, Inter / JetBrains Mono,
+# light/dark toggle, shared navbar + footer) from themakR. Articles (vignettes)
+# rendered on the site pick up this house style. The per-package accent below
+# overrides themakR's default blue with the synesthR suite purple.
+template:
+  package: themakR
+  bslib:
+    primary: "#5E2C8E"
+
+development:
+  mode: auto
+
+reference:
+- title: Read
+  desc: Ingest and tidy literary text.
+  contents:
+  - syn_read_text
+  - syn_example_text
+- title: Score
+  desc: Extract the prosody score that drives everything downstream.
+  contents:
+  - syn_score
+  - is_prosody_score
+- title: Paint
+  desc: Render the score as a generative image.
+  contents:
+  - syn_paint
+  - syn_animate
+- title: Play
+  desc: Render the score as synchronized audio.
+  contents:
+  - syn_play
+  - syn_write_wav
+  - syn_play_gm
+- title: Palette & theme
+  desc: Extract colours and ggplot2 themes from any source.
+  contents:
+  - syn_palette
+  - syn_theme
+  - is_syn_palette
+- title: Media interchange
+  desc: The shared currency passed between functions.
+  contents:
+  - as_syn_media
+  - is_syn_media
+  - media_type
+- title: Optional assist (rim)
+  desc: LLM, Python, and CLI extensions; all degrade gracefully.
+  contents:
+  - syn_interpret
+  - syn_suggest
+  - syn_llm_condense
+  - syn_py_features
+  - syn_export_video
+- title: App
+  contents:
+  - syn_run_app

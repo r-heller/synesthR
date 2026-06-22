@@ -1,0 +1,69 @@
+---
+title: "Getting started with synesthR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started with synesthR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", fig.width = 6, fig.height = 6)
+```
+
+```{r setup}
+library(synesthR)
+```
+
+synesthR turns literary text into a single *prosody score* and renders that one
+score as both an image and a synchronized piece of audio. The pipeline is
+`read -> score -> paint / play / palette`, and it is deterministic: the same
+text and seed always produce the same result.
+
+## Read and score
+
+```{r}
+text  <- syn_read_text(syn_example_text("en"), lang = "en")
+score <- syn_score(text)
+score
+
+summary(score)
+```
+
+The score holds per-sentence features (valence, length, lexical diversity,
+punctuation density) and a smoothed emotional `arc`.
+
+## Paint
+
+```{r paint, fig.alt = "Generative image from the example text."}
+syn_paint(score)
+```
+
+## Play
+
+```{r}
+out <- tempfile(fileext = ".wav")
+syn_write_wav(score, out)   # returns the score invisibly, pipe-friendly
+file.exists(out)
+
+wave <- syn_play(score)
+wave
+```
+
+## Palette and theme
+
+The same score yields a colour palette and a matching `ggplot2` theme:
+
+```{r}
+pal <- syn_palette(score)
+pal
+```
+
+Because the image, the audio, and the palette all come from one score, they are
+three views of the same analysis.
+
+## Determinism
+
+```{r}
+identical(syn_play(score)@left, syn_play(score)@left)
+```
