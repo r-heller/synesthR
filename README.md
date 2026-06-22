@@ -45,11 +45,18 @@ score <- syn_score(text)
 score
 #> <prosody_score> — 6 sentences, lang "en"
 
-# the image and the audio are two views of the same score
-syn_paint(score)
+# syn_paint() returns a ggplot, so it restyles like any other — here in the
+# site's blue palette on a transparent canvas
+blues <- c("#312E81", "#4338CA", "#2563EB", "#0EA5E9", "#22D3EE")
+syn_paint(score) +
+  ggplot2::scale_colour_gradientn(colours = blues) +
+  ggplot2::theme(text             = ggplot2::element_text(colour = "#6366F1"),
+                 plot.title       = ggplot2::element_text(colour = "#6366F1", face = "bold"),
+                 plot.background  = ggplot2::element_rect(fill = NA, colour = NA),
+                 panel.background = ggplot2::element_rect(fill = NA, colour = NA))
 ```
 
-<img src="man/figures/README-demo-1.png" alt="A generative image rendered from the example text." width="100%" />
+<img src="man/figures/README-demo-1.png" alt="A generative image rendered from the example text, restyled in the site's blue palette." width="100%" />
 
 ``` r
 wav <- syn_write_wav(score, tempfile(fileext = ".wav"))
