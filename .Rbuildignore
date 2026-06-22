@@ -16,3 +16,6 @@
 ^\.gitignore$
 ^CLAUDE\.md$
 ^CLAUDE_CODE_.*\.md$
+^data-raw$
+^vignettes/articles$
+^\.remember$

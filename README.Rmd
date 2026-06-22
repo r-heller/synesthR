@@ -31,6 +31,13 @@ same analysis. Colour palettes and `ggplot2` themes can be extracted from text,
 images, or audio through one interface, and an optional local-LLM layer can
 interpret the result.
 
+## How it works
+
+One shared score, rendered three ways — the same numbers become a picture, a
+piece of audio, and a colour palette:
+
+<img src="man/figures/README-workflow.png" alt="synesthR workflow: a text is read into a prosody score, whose sentiment arc is mapped deterministically onto a generative image, a synchronized audio waveform, and a colour palette." width="100%" />
+
 ## Installation
 
 ```r
