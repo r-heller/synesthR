@@ -4,12 +4,14 @@
 # synesthR <img src="man/figures/logo-hex.png" align="right" height="139" alt="synesthR hex logo" />
 
 <!-- badges: start -->
-
 [![R-CMD-check](https://github.com/r-heller/synesthR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-heller/synesthR/actions/workflows/R-CMD-check.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/r-heller/synesthR/graph/badge.svg)](https://app.codecov.io/gh/r-heller/synesthR)
-[![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![pkgdown](https://github.com/r-heller/synesthR/actions/workflows/pkgdown.yaml/badge.svg)](https://r-heller.github.io/synesthR/)
+[![CRAN status](https://www.r-pkg.org/badges/version/synesthR)](https://CRAN.R-project.org/package=synesthR)
+[![Codecov test coverage](https://codecov.io/gh/r-heller/synesthR/branch/main/graph/badge.svg)](https://app.codecov.io/gh/r-heller/synesthR?branch=main)
+[![CRAN downloads](https://cranlogs.r-pkg.org/badges/synesthR)](https://cran.r-project.org/package=synesthR)
+[![CRAN downloads total](https://cranlogs.r-pkg.org/badges/grand-total/synesthR)](https://cran.r-project.org/package=synesthR)
+[![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 **synesthR** turns literary text (German, English, French) into

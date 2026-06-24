@@ -14,3 +14,4 @@ pkgdown/
 .RData
 .Rproj.user
 *.Rcheck/
+_coverage/
