@@ -36,15 +36,17 @@ test_that("syn_palette.Wave derives a palette from audio", {
 })
 
 test_that("syn_palette image method aborts cleanly when magick is absent", {
-  if (requireNamespace("magick", quietly = TRUE)) {
-    img <- magick::image_blank(40, 40, color = "tomato")
-    p <- syn_palette(img, n = 5L)
-    expect_true(is_syn_palette(p))
-    expect_identical(p$source, "image")
-  } else {
-    fake <- structure(list(), class = "magick-image")
-    expect_snapshot(syn_palette(fake), error = TRUE)
-  }
+  local_mocked_bindings(.has_package = function(...) FALSE)
+  fake <- structure(list(), class = "magick-image")
+  expect_snapshot(syn_palette(fake), error = TRUE)
+})
+
+test_that("syn_palette extracts image colours when magick is installed", {
+  skip_if_not_installed("magick")
+  img <- magick::image_blank(40, 40, color = "tomato")
+  p <- syn_palette(img, n = 5L)
+  expect_true(is_syn_palette(p))
+  expect_identical(p$source, "image")
 })
 
 test_that("syn_theme returns a ggplot2 theme", {

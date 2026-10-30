@@ -53,14 +53,14 @@ test_that(".detect_lang validates an explicit lang", {
 })
 
 test_that("auto-detect path: present uses cld3, absent aborts", {
-  if (requireNamespace("cld3", quietly = TRUE)) {
-    # present-path: a clearly English sentence detects as a supported language
-    out <- syn_read_text("This is an unambiguously English sentence about cats.")
-    expect_true(attr(out, "lang") %in% c("de", "en", "fr"))
-  } else {
-    # absent-path: NULL lang with no cld3 must abort informatively
-    expect_snapshot(syn_read_text("some text", lang = NULL), error = TRUE)
-  }
+  local_mocked_bindings(.has_package = function(...) FALSE)
+  expect_snapshot(syn_read_text("some text", lang = NULL), error = TRUE)
+})
+
+test_that("language detection works when cld3 is installed", {
+  skip_if_not_installed("cld3")
+  out <- syn_read_text("This is an unambiguously English sentence about cats.")
+  expect_true(attr(out, "lang") %in% c("de", "en", "fr"))
 })
 
 test_that("syn_example_text returns a non-empty string for each language", {

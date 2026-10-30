@@ -15,7 +15,8 @@ Invisibly \code{NULL}; called for its side effect of launching the app.
 \description{
 Opens an interactive demo: paste text, choose a language, and see the
 generated image, palette, and hear the audio. The optional LLM interpretation
-panel activates only when an \pkg{ellmer} backend is reachable. Requires
+panel is available with \pkg{ellmer}; the backend is contacted only when
+interpretation is requested. Requires
 \pkg{shiny}.
 }
 \examples{

@@ -18,9 +18,16 @@ test_that("enrichment never alters the deterministic core mapping (contract)", {
 
 test_that("syn_py_features dual path: present enriches, absent aborts cleanly", {
   sc <- syn_score(syn_read_text(syn_example_text("en"), lang = "en"))
-  has_py <- requireNamespace("reticulate", quietly = TRUE) &&
-    tryCatch(reticulate::py_module_available("numpy"), error = function(e) FALSE)
-  if (has_py) {
+  local_mocked_bindings(.has_package = function(package) FALSE)
+  expect_snapshot(syn_py_features(sc), error = TRUE)
+})
+
+test_that("configured Python enrichment preserves the core", {
+  skip_if_not_installed("reticulate")
+  # A test must not provision/download a Python runtime as a side effect.
+  skip_if(Sys.getenv("RETICULATE_PYTHON") == "", "No explicit test Python configured")
+  skip_if_not(reticulate::py_module_available("numpy"))
+  sc <- syn_score(syn_read_text(syn_example_text("en"), lang = "en"))
     out <- syn_py_features(sc)
     expect_true(is_prosody_score(out))
     expect_true(!is.null(out$enrichment$py_features))
@@ -28,7 +35,4 @@ test_that("syn_py_features dual path: present enriches, absent aborts cleanly", 
                  c("sentence_id", "valence_gradient", "valence_cumulative"))
     # core mapping still identical
     expect_identical(.map_params(out), .map_params(sc))
-  } else {
-    expect_snapshot(syn_py_features(sc), error = TRUE)
-  }
 })

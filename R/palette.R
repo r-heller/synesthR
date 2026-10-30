@@ -78,7 +78,7 @@ syn_palette.character <- function(x, n = 5L, lang = NULL, ...) {
 #' @export
 `syn_palette.magick-image` <- function(x, n = 5L, ...) {
   rlang::check_dots_empty()
-  if (!requireNamespace("magick", quietly = TRUE)) {
+  if (!.has_package("magick")) {
     cli::cli_abort(c(
       "Extracting a palette from an image requires the {.pkg magick} package.",
       "i" = "Install it with {.code install.packages(\"magick\")}."

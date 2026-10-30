@@ -24,6 +24,7 @@
 syn_read_text <- function(x, lang = NULL, text_col = "text",
                           call = rlang::caller_env()) {
   text <- .as_text(x, text_col = text_col, call = call)
+  if (anyNA(text)) cli::cli_abort("Text must not contain missing values.", call = call)
   full <- paste(text, collapse = " ")
 
   # Empty / whitespace-only input: type-stable empty tibble.
@@ -82,7 +83,7 @@ syn_read_text <- function(x, lang = NULL, text_col = "text",
   if (!is.null(lang)) {
     return(.check_choice(lang, c("de", "en", "fr"), call = call))
   }
-  if (!requireNamespace("cld3", quietly = TRUE)) {
+  if (!.has_package("cld3")) {
     cli::cli_abort(
       c(
         "Cannot auto-detect language: package {.pkg cld3} is not installed.",

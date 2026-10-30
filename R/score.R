@@ -70,7 +70,8 @@ syn_score <- function(text, seed = 1L, call = rlang::caller_env()) {
 
 # Coerce/validate an integer-ish scalar seed.
 .check_choice_int <- function(x, call = rlang::caller_env()) {
-  if (length(x) != 1L || is.na(x) || !is.numeric(x)) {
+  if (!is.numeric(x) || length(x) != 1L || !is.finite(x) ||
+      x != floor(x) || abs(x) > .Machine$integer.max) {
     cli::cli_abort("{.arg seed} must be a single integer.", call = call)
   }
   x

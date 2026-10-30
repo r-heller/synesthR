@@ -38,10 +38,15 @@ ui <- shiny::fluidPage(
 )
 
 server <- function(input, output, session) {
+  audio_file <- tempfile("audio-", tmpdir = .syn_audio_dir, fileext = ".wav")
+  session$onSessionEnded(function() unlink(audio_file))
   score <- shiny::eventReactive(input$go, {
     shiny::req(input$text)
     txt <- synesthR::syn_read_text(input$text, lang = input$lang)
-    synesthR::syn_score(txt, seed = as.integer(input$seed))
+    shiny::validate(shiny::need(is.numeric(input$seed) && length(input$seed)==1L &&
+      is.finite(input$seed) && input$seed==floor(input$seed) &&
+      abs(input$seed)<=.Machine$integer.max, "Seed must be a finite integer."))
+    synesthR::syn_score(txt, seed = input$seed)
   }, ignoreNULL = FALSE)
 
   output$image <- shiny::renderPlot({
@@ -63,23 +68,22 @@ server <- function(input, output, session) {
 
   wav_path <- shiny::reactive({
     shiny::req(score())
-    f <- file.path(.syn_audio_dir, paste0("synesthR_", session$token, ".wav"))
+    f <- audio_file
     synesthR::syn_write_wav(score(), f, overwrite = TRUE)
     f
   })
 
   output$audio <- shiny::renderUI({
     shiny::req(wav_path())
-    src <- file.path("syn_audio", basename(wav_path()))
+    src <- paste0(file.path("syn_audio", basename(wav_path())),
+                  "?v=", unname(tools::md5sum(wav_path())))
     shiny::tags$audio(src = src, type = "audio/wav", controls = NA,
                       style = "width:100%;margin-top:8px;")
   })
 
   output$llm <- shiny::renderUI({
     shiny::req(score())
-    reachable <- requireNamespace("ellmer", quietly = TRUE) &&
-      tryCatch({ ellmer::chat_ollama(model = "mistral-small"); TRUE },
-               error = function(e) FALSE)
+    reachable <- requireNamespace("ellmer", quietly = TRUE)
     if (!reachable) {
       shiny::tags$em(paste(
         "Local LLM interpretation is unavailable.",

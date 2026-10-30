@@ -24,6 +24,11 @@
 #' @export
 syn_play <- function(score, sample_rate = .SAMPLE_RATE) {
   .check_class(score, "prosody_score")
+  if (!is.numeric(sample_rate) || length(sample_rate) != 1L ||
+      !is.finite(sample_rate) || sample_rate < 1 ||
+      sample_rate != floor(sample_rate) || sample_rate > .Machine$integer.max) {
+    cli::cli_abort("{.arg sample_rate} must be a positive integer within R's integer range.")
+  }
   sr <- as.integer(sample_rate)
   m <- .map_params(score)$music
   notes <- m$notes
@@ -113,7 +118,7 @@ syn_write_wav <- function(score, path, overwrite = FALSE, sample_rate = .SAMPLE_
 syn_play_gm <- function(score, ...) {
   rlang::check_dots_empty()
   .check_class(score, "prosody_score")
-  if (!requireNamespace("gm", quietly = TRUE)) {
+  if (!.has_package("gm")) {
     cli::cli_abort(c(
       "{.fn syn_play_gm} requires the {.pkg gm} package.",
       "i" = "Use {.fn syn_play} for the self-contained {.pkg tuneR} backend."

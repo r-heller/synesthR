@@ -57,3 +57,6 @@
   }
   invisible(match.arg(x, choices))
 }
+
+# Stable seam for exercising both optional-dependency paths on every platform.
+.has_package <- function(package) requireNamespace(package, quietly = TRUE)

@@ -37,6 +37,17 @@ piece of audio, and a colour palette:
 pak::pak("r-heller/synesthR")
 ```
 
+For a local checkout, install R 4.1 or later, then run:
+
+```r
+install.packages("remotes")
+remotes::install_deps(dependencies = TRUE)
+remotes::install_local(".", dependencies = FALSE)
+```
+
+Missing text values are rejected; choose an explicit missing-data policy before
+reading a table. Seeds and sample rates must be finite integers.
+
 ## Usage
 
 ``` r
@@ -74,7 +85,10 @@ syn_palette(score)
 ```
 
 The core (`read -> score -> map -> paint/play/palette/media`) is pure R,
-deterministic given `(text, seed)`, and requires no external software.
+deterministic for the same text, language, seed, settings, and package versions.
+The core requires no external runtime. Its lexicon-based sentiment and rhythm
+features are artistic mappings, not validated psychological or linguistic
+measurements; irony, context, and out-of-vocabulary words can be misread.
 Optional extensions (image/audio palettes via `magick`/`seewave`,
 animation via `gganimate`, engraved scores via `gm`, a local LLM via
 `ellmer`, and Python interop via `reticulate`) live in `Suggests` and

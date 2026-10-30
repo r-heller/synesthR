@@ -24,11 +24,8 @@ test_that(".run_tool surfaces a non-zero exit status", {
 })
 
 test_that(".check_pymod aborts when reticulate is absent", {
-  if (!requireNamespace("reticulate", quietly = TRUE)) {
-    expect_snapshot(.check_pymod("numpy"), error = TRUE)
-  } else {
-    expect_error(.check_pymod("a_module_that_is_not_installed_xyz"))
-  }
+  local_mocked_bindings(.has_package = function(package) FALSE)
+  expect_snapshot(.check_pymod("numpy"), error = TRUE)
 })
 
 test_that(".check_client validates package presence and probe", {

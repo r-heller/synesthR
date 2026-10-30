@@ -31,7 +31,7 @@
 # module -> clean abort.
 .check_pymod <- function(module, call = rlang::caller_env()) {
   .check_string(module, call = call)
-  if (!requireNamespace("reticulate", quietly = TRUE)) {
+  if (!.has_package("reticulate")) {
     cli::cli_abort(c(
       "Python interop requires the {.pkg reticulate} package.",
       "i" = "Install it with {.code install.packages(\"reticulate\")}.",

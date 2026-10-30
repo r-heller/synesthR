@@ -45,10 +45,12 @@ test_that("syn_write_wav guards against overwrite", {
 
 test_that("syn_play_gm dual path: present builds a Music object, absent aborts", {
   sc <- syn_score(syn_read_text(syn_example_text("en"), lang = "en"))
-  if (!requireNamespace("gm", quietly = TRUE)) {
-    expect_snapshot(syn_play_gm(sc), error = TRUE)
-  } else {
-    out <- syn_play_gm(sc)
-    expect_true(inherits(out, "Music"))
-  }
+  local_mocked_bindings(.has_package = function(...) FALSE)
+  expect_snapshot(syn_play_gm(sc), error = TRUE)
+})
+
+test_that("syn_play_gm builds a Music object when gm is installed", {
+  skip_if_not_installed("gm")
+  sc <- syn_score(syn_read_text(syn_example_text("en"), lang = "en"))
+  expect_true(inherits(syn_play_gm(sc), "Music"))
 })

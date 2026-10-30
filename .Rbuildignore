@@ -20,3 +20,5 @@
 ^data-raw$
 ^vignettes/articles$
 ^\.remember$
+^\.git$
+^MAINTENANCE\.md$
