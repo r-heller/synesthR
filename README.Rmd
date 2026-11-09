@@ -14,8 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# synesthR <img src="man/figures/logo-hex.png" align="right" height="139" alt="synesthR hex logo" />
-
+# synesthR <picture class="cttir-readme-logo"><source class="cttir-logo-dark-source" media="(prefers-color-scheme: dark)" srcset="man/figures/logo-dark.png" /><img src="man/figures/logo.png" align="right" alt="synesthR logo" width="120" height="139" /></picture>
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/r-heller/synesthR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/r-heller/synesthR/actions/workflows/R-CMD-check.yaml)
 [![pkgdown](https://github.com/r-heller/synesthR/actions/workflows/pkgdown.yaml/badge.svg)](https://r-heller.github.io/synesthR/)
