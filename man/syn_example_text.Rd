@@ -13,14 +13,15 @@ syn_example_text(lang = c("en", "de", "fr"))
 A single character string.
 }
 \description{
-Returns a short public-domain-style passage in the requested language, useful
-for examples and quick experiments.
+Returns a short passage in the requested language, useful for examples and
+quick experiments. The passages describe the same scene in each language;
+they were written for this package and are distributed under its licence.
 }
 \examples{
 syn_example_text("en")
 }
 \seealso{
-Other reading functions: 
-\code{\link{syn_read_text}()}
+Other reading functions:
+\code{\link[=syn_read_text]{syn_read_text()}}
 }
 \concept{reading functions}
