@@ -1,15 +1,34 @@
+## Submission
+
+This is a new submission.
+
+## Test environments
+
+* local: macOS (aarch64), R 4.6.1, `R CMD check --as-cran --no-manual`
+  (no LaTeX installation is available locally, so the PDF manual was not
+  built there)
+* GitHub Actions: macos-latest (release), windows-latest (release),
+  ubuntu-latest (devel, release, oldrel-1), with `--as-cran`
+
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 1 note
 
-* This is a new submission.
+* checking CRAN incoming feasibility ... NOTE
+  New submission
 
 ## Notes
 
-* All optional functionality (image/audio palettes, animation, engraved
-  scores, local-LLM assist, Python interop, CLI tools) lives in `Suggests`
-  and is guarded with `requireNamespace()`; the package passes
-  `R CMD check --as-cran` with every optional package and external tool
-  absent.
-* Examples that require a network service or external software are wrapped
-  in `\donttest{}` / `@examplesIf interactive()`.
+* All optional functionality (image and audio palettes, animation, engraved
+  scores, local-LLM assistance, Python interoperability and command-line
+  tools) lives in `Suggests` and is guarded with `requireNamespace()` or a
+  tool check; the package passes `R CMD check --as-cran` with every optional
+  package and external tool absent.
+* Video export is not available in this version: `syn_export_video()` always
+  signals an informative error, whether or not 'ffmpeg' is installed.
+* Examples that need a running local language model (Ollama) or a Python
+  installation with 'numpy' are wrapped in `\dontrun{}` with a comment
+  explaining why. Examples for the optional packages 'gganimate' and 'gm'
+  run only when those packages are installed.
+* The bundled example passages (`inst/extdata`) were written for this package
+  and are distributed under its MIT licence.

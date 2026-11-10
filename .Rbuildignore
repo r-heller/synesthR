@@ -22,6 +22,5 @@
 ^\.remember$
 ^\.git$
 ^MAINTENANCE\.md$
-
 ^tools/branding$
 ^tools/draw-logo\.R$
