@@ -28,6 +28,10 @@ validate_prosody_score <- function(x, call = rlang::caller_env()) {
 #' Test whether an object is a prosody_score
 #' @param x An object to test.
 #' @return A logical scalar.
+#' @examples
+#' score <- syn_score(syn_read_text("A short calm line.", lang = "en"))
+#' is_prosody_score(score)
+#' is_prosody_score("A short calm line.")
 #' @export
 is_prosody_score <- function(x) inherits(x, "prosody_score")
 

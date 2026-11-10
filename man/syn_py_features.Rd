@@ -23,11 +23,19 @@ Python and attaches them to the score's \code{enrichment} slot. The deterministi
 core features, arc, and mapping are left untouched — enrichment is additive
 and never feeds the reproducibility snapshot.
 }
+\examples{
+\dontrun{
+# Not run: needs the reticulate package and a Python installation with
+# numpy, which are not available on every system.
+score <- syn_score(syn_read_text(syn_example_text("en"), lang = "en"))
+syn_py_features(score)$enrichment$py_features
+}
+}
 \seealso{
-Other assist functions: 
-\code{\link{syn_export_video}()},
-\code{\link{syn_interpret}()},
-\code{\link{syn_llm_condense}()},
-\code{\link{syn_suggest}()}
+Other assist functions:
+\code{\link[=syn_export_video]{syn_export_video()}},
+\code{\link[=syn_interpret]{syn_interpret()}},
+\code{\link[=syn_llm_condense]{syn_llm_condense()}},
+\code{\link[=syn_suggest]{syn_suggest()}}
 }
 \concept{assist functions}

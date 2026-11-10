@@ -23,6 +23,11 @@ new_syn_media <- function(content = NULL,
 #'   [tuneR::Wave] (audio), or `prosody_score` (score).
 #' @param ... Passed to methods.
 #' @return A `syn_media` object.
+#' @examples
+#' m <- as_syn_media("A quiet morning by the sea.")
+#' m
+#' score <- syn_score(syn_read_text(syn_example_text("en"), lang = "en"))
+#' media_type(as_syn_media(score))
 #' @export
 as_syn_media <- function(x, ...) {
   UseMethod("as_syn_media")
@@ -72,6 +77,9 @@ as_syn_media.default <- function(x, ...) {
 #' @param x An object to test.
 #' @return A logical scalar.
 #' @family media functions
+#' @examples
+#' is_syn_media(as_syn_media("Some text."))
+#' is_syn_media("Some text.")
 #' @export
 is_syn_media <- function(x) inherits(x, "syn_media")
 

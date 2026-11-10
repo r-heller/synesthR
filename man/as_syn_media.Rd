@@ -39,3 +39,9 @@ a type tag (\code{"text"}, \code{"image"}, \code{"audio"}, \code{"score"}), and 
 is the common currency that lets images, audio, text, and prosody scores be
 passed freely between \pkg{synesthR} functions.
 }
+\examples{
+m <- as_syn_media("A quiet morning by the sea.")
+m
+score <- syn_score(syn_read_text(syn_example_text("en"), lang = "en"))
+media_type(as_syn_media(score))
+}

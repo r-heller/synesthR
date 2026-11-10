@@ -15,9 +15,14 @@ A logical scalar.
 \description{
 Test whether an object is a syn_palette
 }
+\examples{
+pal <- syn_palette(syn_score(syn_read_text("A bright warm day.", lang = "en")))
+is_syn_palette(pal)
+is_syn_palette(c("#000000", "#FFFFFF"))
+}
 \seealso{
-Other palette functions: 
-\code{\link{syn_palette}()},
-\code{\link{syn_theme}()}
+Other palette functions:
+\code{\link[=syn_palette]{syn_palette()}},
+\code{\link[=syn_theme]{syn_theme()}}
 }
 \concept{palette functions}

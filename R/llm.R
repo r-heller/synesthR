@@ -65,6 +65,13 @@
 #' @param call The calling environment, for error reporting. Experts only.
 #' @return A character string. Requires \pkg{ellmer} and a reachable backend.
 #' @family assist functions
+#' @examples
+#' \dontrun{
+#' # Not run: needs the ellmer package and a running local Ollama server
+#' # with the model available.
+#' score <- syn_score(syn_read_text(syn_example_text("en"), lang = "en"))
+#' syn_interpret(score)
+#' }
 #' @export
 syn_interpret <- function(score, model = .DEFAULT_LLM_MODEL, ...,
                           call = rlang::caller_env()) {
@@ -88,6 +95,13 @@ syn_interpret <- function(score, model = .DEFAULT_LLM_MODEL, ...,
 #' @return A list with `target`, `suggestion` (advisory text or `NA`), and
 #'   `applied = FALSE`. Requires \pkg{ellmer} + a reachable backend.
 #' @family assist functions
+#' @examples
+#' \dontrun{
+#' # Not run: needs the ellmer package and a running local Ollama server
+#' # with the model available.
+#' score <- syn_score(syn_read_text(syn_example_text("en"), lang = "en"))
+#' syn_suggest(score, target = "tempo")
+#' }
 #' @export
 syn_suggest <- function(score, target = c("palette", "tempo"),
                         model = .DEFAULT_LLM_MODEL, ...,
@@ -117,6 +131,13 @@ syn_suggest <- function(score, target = c("palette", "tempo"),
 #' @return A tibble in the same shape as [syn_read_text()] output. Requires
 #'   \pkg{ellmer} + a reachable backend.
 #' @family assist functions
+#' @examples
+#' \dontrun{
+#' # Not run: needs the ellmer package and a running local Ollama server
+#' # with the model available.
+#' text <- syn_read_text(syn_example_text("de"), lang = "de")
+#' syn_llm_condense(text)
+#' }
 #' @export
 syn_llm_condense <- function(text, model = .DEFAULT_LLM_MODEL, ...,
                              call = rlang::caller_env()) {

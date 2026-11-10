@@ -22,8 +22,8 @@ colour becomes the background, the lightest the foreground text and lines.
 syn_theme(syn_palette(syn_score(syn_read_text("Calm sea.", lang = "en"))))
 }
 \seealso{
-Other palette functions: 
-\code{\link{is_syn_palette}()},
-\code{\link{syn_palette}()}
+Other palette functions:
+\code{\link[=is_syn_palette]{is_syn_palette()}},
+\code{\link[=syn_palette]{syn_palette()}}
 }
 \concept{palette functions}

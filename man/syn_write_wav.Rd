@@ -26,10 +26,10 @@ wav <- tempfile(fileext = ".wav")
 syn_write_wav(syn_score(syn_read_text("Two words.", lang = "en")), wav)
 }
 \seealso{
-Other rendering functions: 
-\code{\link{syn_animate}()},
-\code{\link{syn_paint}()},
-\code{\link{syn_play}()},
-\code{\link{syn_play_gm}()}
+Other rendering functions:
+\code{\link[=syn_animate]{syn_animate()}},
+\code{\link[=syn_paint]{syn_paint()}},
+\code{\link[=syn_play]{syn_play()}},
+\code{\link[=syn_play_gm]{syn_play_gm()}}
 }
 \concept{rendering functions}

@@ -36,5 +36,7 @@ export(syn_score)
 export(syn_suggest)
 export(syn_theme)
 export(syn_write_wav)
-importFrom(rlang,"%||%")
-importFrom(rlang,.data)
+importFrom(rlang,
+  "%||%",
+  .data
+)

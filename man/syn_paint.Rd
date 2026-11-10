@@ -27,10 +27,10 @@ p <- syn_paint(syn_score(syn_read_text(syn_example_text("en"), lang = "en")))
 \seealso{
 \code{\link[=syn_play]{syn_play()}} for the audio view, \code{\link[=syn_animate]{syn_animate()}} for animation.
 
-Other rendering functions: 
-\code{\link{syn_animate}()},
-\code{\link{syn_play}()},
-\code{\link{syn_play_gm}()},
-\code{\link{syn_write_wav}()}
+Other rendering functions:
+\code{\link[=syn_animate]{syn_animate()}},
+\code{\link[=syn_play]{syn_play()}},
+\code{\link[=syn_play_gm]{syn_play_gm()}},
+\code{\link[=syn_write_wav]{syn_write_wav()}}
 }
 \concept{rendering functions}

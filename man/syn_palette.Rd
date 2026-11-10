@@ -44,8 +44,8 @@ interchangeable across the suite regardless of where they came from.
 syn_palette(syn_score(syn_read_text("A bright warm day.", lang = "en")))
 }
 \seealso{
-Other palette functions: 
-\code{\link{is_syn_palette}()},
-\code{\link{syn_theme}()}
+Other palette functions:
+\code{\link[=is_syn_palette]{is_syn_palette()}},
+\code{\link[=syn_theme]{syn_theme()}}
 }
 \concept{palette functions}

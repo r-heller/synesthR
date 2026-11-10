@@ -24,7 +24,7 @@ m <- as_syn_media("some text")
 media_type(m)
 }
 \seealso{
-Other media functions: 
-\code{\link{is_syn_media}()}
+Other media functions:
+\code{\link[=is_syn_media]{is_syn_media()}}
 }
 \concept{media functions}

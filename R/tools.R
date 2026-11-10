@@ -20,6 +20,10 @@
 #' @param call The calling environment, for error reporting. Experts only.
 #' @return Never returns normally in this version: always aborts with guidance.
 #' @family assist functions
+#' @examples
+#' score <- syn_score(syn_read_text("A short calm line.", lang = "en"))
+#' # Video export is not available in this version and always signals an error.
+#' try(syn_export_video(score, tempfile(fileext = ".mp4")))
 #' @export
 syn_export_video <- function(score, path, fps = 12, call = rlang::caller_env()) {
   .check_class(score, "prosody_score", call = call)

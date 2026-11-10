@@ -18,11 +18,26 @@ A \pkg{gganimate} animation object. Requires \pkg{gganimate}.
 Animates the element cloud across the narrative, revealing it sentence by
 sentence so the emotional arc unfolds in time. Requires \pkg{gganimate}.
 }
+\examples{
+\dontshow{if (requireNamespace("gganimate", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+score <- syn_score(syn_read_text(syn_example_text("en"), lang = "en"))
+anim <- syn_animate(score)
+class(anim)
+\donttest{
+# Rendering the frames takes a while and needs a gganimate renderer.
+frames <- gganimate::animate(
+  anim, nframes = 10, fps = 5,
+  renderer = gganimate::file_renderer(tempdir(), prefix = "syn_frame")
+)
+unlink(frames)
+}
+\dontshow{\}) # examplesIf}
+}
 \seealso{
-Other rendering functions: 
-\code{\link{syn_paint}()},
-\code{\link{syn_play}()},
-\code{\link{syn_play_gm}()},
-\code{\link{syn_write_wav}()}
+Other rendering functions:
+\code{\link[=syn_paint]{syn_paint()}},
+\code{\link[=syn_play]{syn_play()}},
+\code{\link[=syn_play_gm]{syn_play_gm()}},
+\code{\link[=syn_write_wav]{syn_write_wav()}}
 }
 \concept{rendering functions}

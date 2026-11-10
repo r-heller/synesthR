@@ -12,7 +12,7 @@ syn_play_gm(score, ...)
 \item{...}{Reserved for future use; must be empty.}
 }
 \value{
-A \pkg{gm} \code{Music} object (engrave/play it with \code{\link[gm:show.Music]{gm::show()}}, which
+A \pkg{gm} \code{Music} object (engrave/play it with \code{\link[gm:show]{gm::show()}}, which
 requires MuseScore). Requires \pkg{gm}.
 }
 \description{
@@ -20,11 +20,18 @@ Builds a \pkg{gm} music object (engraved score / richer playback) from the
 score's notes. Requires the \pkg{gm} package and a MuseScore installation.
 The self-contained \code{\link[=syn_play]{syn_play()}} backend needs neither.
 }
+\examples{
+\dontshow{if (requireNamespace("gm", quietly = TRUE)) withAutoprint(\{ # examplesIf}
+score <- syn_score(syn_read_text("A short calm line.", lang = "en"))
+music <- syn_play_gm(score)
+class(music)
+\dontshow{\}) # examplesIf}
+}
 \seealso{
-Other rendering functions: 
-\code{\link{syn_animate}()},
-\code{\link{syn_paint}()},
-\code{\link{syn_play}()},
-\code{\link{syn_write_wav}()}
+Other rendering functions:
+\code{\link[=syn_animate]{syn_animate()}},
+\code{\link[=syn_paint]{syn_paint()}},
+\code{\link[=syn_play]{syn_play()}},
+\code{\link[=syn_write_wav]{syn_write_wav()}}
 }
 \concept{rendering functions}

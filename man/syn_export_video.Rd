@@ -24,11 +24,16 @@ for the \code{ffmpeg} binary and reports status, but video export is intentional
 not enabled in this version. Use \code{\link[=syn_paint]{syn_paint()}} for a still image and
 \code{\link[=syn_write_wav]{syn_write_wav()}} for audio.
 }
+\examples{
+score <- syn_score(syn_read_text("A short calm line.", lang = "en"))
+# Video export is not available in this version and always signals an error.
+try(syn_export_video(score, tempfile(fileext = ".mp4")))
+}
 \seealso{
-Other assist functions: 
-\code{\link{syn_interpret}()},
-\code{\link{syn_llm_condense}()},
-\code{\link{syn_py_features}()},
-\code{\link{syn_suggest}()}
+Other assist functions:
+\code{\link[=syn_interpret]{syn_interpret()}},
+\code{\link[=syn_llm_condense]{syn_llm_condense()}},
+\code{\link[=syn_py_features]{syn_py_features()}},
+\code{\link[=syn_suggest]{syn_suggest()}}
 }
 \concept{assist functions}

@@ -29,11 +29,19 @@ Sends a compact, source-free summary of the score's features to a local LLM
 why the image and music turned out as they did. Optional, non-deterministic,
 and never part of the core mapping.
 }
+\examples{
+\dontrun{
+# Not run: needs the ellmer package and a running local Ollama server
+# with the model available.
+score <- syn_score(syn_read_text(syn_example_text("en"), lang = "en"))
+syn_interpret(score)
+}
+}
 \seealso{
-Other assist functions: 
-\code{\link{syn_export_video}()},
-\code{\link{syn_llm_condense}()},
-\code{\link{syn_py_features}()},
-\code{\link{syn_suggest}()}
+Other assist functions:
+\code{\link[=syn_export_video]{syn_export_video()}},
+\code{\link[=syn_llm_condense]{syn_llm_condense()}},
+\code{\link[=syn_py_features]{syn_py_features()}},
+\code{\link[=syn_suggest]{syn_suggest()}}
 }
 \concept{assist functions}

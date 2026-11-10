@@ -33,11 +33,19 @@ mutates the score or auto-applies changes, preserving reproducibility. Any
 malformed model response falls back to an empty (no-op) suggestion rather
 than flowing unchecked into the deterministic parameters.
 }
+\examples{
+\dontrun{
+# Not run: needs the ellmer package and a running local Ollama server
+# with the model available.
+score <- syn_score(syn_read_text(syn_example_text("en"), lang = "en"))
+syn_suggest(score, target = "tempo")
+}
+}
 \seealso{
-Other assist functions: 
-\code{\link{syn_export_video}()},
-\code{\link{syn_interpret}()},
-\code{\link{syn_llm_condense}()},
-\code{\link{syn_py_features}()}
+Other assist functions:
+\code{\link[=syn_export_video]{syn_export_video()}},
+\code{\link[=syn_interpret]{syn_interpret()}},
+\code{\link[=syn_llm_condense]{syn_llm_condense()}},
+\code{\link[=syn_py_features]{syn_py_features()}}
 }
 \concept{assist functions}

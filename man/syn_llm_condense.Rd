@@ -28,11 +28,19 @@ A tibble in the same shape as \code{\link[=syn_read_text]{syn_read_text()}} outp
 For very long inputs, condense to a representative passage using a local LLM
 before \code{\link[=syn_score]{syn_score()}}. Opt-in because it changes the text being analysed.
 }
+\examples{
+\dontrun{
+# Not run: needs the ellmer package and a running local Ollama server
+# with the model available.
+text <- syn_read_text(syn_example_text("de"), lang = "de")
+syn_llm_condense(text)
+}
+}
 \seealso{
-Other assist functions: 
-\code{\link{syn_export_video}()},
-\code{\link{syn_interpret}()},
-\code{\link{syn_py_features}()},
-\code{\link{syn_suggest}()}
+Other assist functions:
+\code{\link[=syn_export_video]{syn_export_video()}},
+\code{\link[=syn_interpret]{syn_interpret()}},
+\code{\link[=syn_py_features]{syn_py_features()}},
+\code{\link[=syn_suggest]{syn_suggest()}}
 }
 \concept{assist functions}

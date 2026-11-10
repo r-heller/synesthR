@@ -114,6 +114,10 @@ syn_write_wav <- function(score, path, overwrite = FALSE, sample_rate = .SAMPLE_
 #' @return A \pkg{gm} `Music` object (engrave/play it with [gm::show()], which
 #'   requires MuseScore). Requires \pkg{gm}.
 #' @family rendering functions
+#' @examplesIf requireNamespace("gm", quietly = TRUE)
+#' score <- syn_score(syn_read_text("A short calm line.", lang = "en"))
+#' music <- syn_play_gm(score)
+#' class(music)
 #' @export
 syn_play_gm <- function(score, ...) {
   rlang::check_dots_empty()

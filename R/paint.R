@@ -61,6 +61,18 @@ syn_paint <- function(score, ...) {
 #' @param ... Passed to [gganimate::transition_states()].
 #' @return A \pkg{gganimate} animation object. Requires \pkg{gganimate}.
 #' @family rendering functions
+#' @examplesIf requireNamespace("gganimate", quietly = TRUE)
+#' score <- syn_score(syn_read_text(syn_example_text("en"), lang = "en"))
+#' anim <- syn_animate(score)
+#' class(anim)
+#' \donttest{
+#' # Rendering the frames takes a while and needs a gganimate renderer.
+#' frames <- gganimate::animate(
+#'   anim, nframes = 10, fps = 5,
+#'   renderer = gganimate::file_renderer(tempdir(), prefix = "syn_frame")
+#' )
+#' unlink(frames)
+#' }
 #' @export
 syn_animate <- function(score, ...) {
   .check_class(score, "prosody_score")

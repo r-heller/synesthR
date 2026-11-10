@@ -15,3 +15,8 @@ A logical scalar.
 \description{
 Test whether an object is a prosody_score
 }
+\examples{
+score <- syn_score(syn_read_text("A short calm line.", lang = "en"))
+is_prosody_score(score)
+is_prosody_score("A short calm line.")
+}

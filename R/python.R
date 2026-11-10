@@ -22,6 +22,13 @@
 #'   `sentence_id`, `valence_gradient`, `valence_cumulative`). Requires
 #'   \pkg{reticulate} + Python \pkg{numpy}.
 #' @family assist functions
+#' @examples
+#' \dontrun{
+#' # Not run: needs the reticulate package and a Python installation with
+#' # numpy, which are not available on every system.
+#' score <- syn_score(syn_read_text(syn_example_text("en"), lang = "en"))
+#' syn_py_features(score)$enrichment$py_features
+#' }
 #' @export
 syn_py_features <- function(score, call = rlang::caller_env()) {
   .check_class(score, "prosody_score", call = call)

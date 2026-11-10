@@ -27,10 +27,10 @@ w <- syn_play(syn_score(syn_read_text("A short calm line.", lang = "en")))
 \seealso{
 \code{\link[=syn_paint]{syn_paint()}} for the visual view, \code{\link[=syn_write_wav]{syn_write_wav()}} to save.
 
-Other rendering functions: 
-\code{\link{syn_animate}()},
-\code{\link{syn_paint}()},
-\code{\link{syn_play_gm}()},
-\code{\link{syn_write_wav}()}
+Other rendering functions:
+\code{\link[=syn_animate]{syn_animate()}},
+\code{\link[=syn_paint]{syn_paint()}},
+\code{\link[=syn_play_gm]{syn_play_gm()}},
+\code{\link[=syn_write_wav]{syn_write_wav()}}
 }
 \concept{rendering functions}

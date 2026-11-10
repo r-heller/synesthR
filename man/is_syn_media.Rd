@@ -15,8 +15,12 @@ A logical scalar.
 \description{
 Test whether an object is a syn_media container
 }
+\examples{
+is_syn_media(as_syn_media("Some text."))
+is_syn_media("Some text.")
+}
 \seealso{
-Other media functions: 
-\code{\link{media_type}()}
+Other media functions:
+\code{\link[=media_type]{media_type()}}
 }
 \concept{media functions}

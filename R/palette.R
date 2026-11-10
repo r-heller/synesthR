@@ -140,6 +140,10 @@ syn_palette.Wave <- function(x, n = 5L, ...) {
 #' @param x An object to test.
 #' @return A logical scalar.
 #' @family palette functions
+#' @examples
+#' pal <- syn_palette(syn_score(syn_read_text("A bright warm day.", lang = "en")))
+#' is_syn_palette(pal)
+#' is_syn_palette(c("#000000", "#FFFFFF"))
 #' @export
 is_syn_palette <- function(x) inherits(x, "syn_palette")
 

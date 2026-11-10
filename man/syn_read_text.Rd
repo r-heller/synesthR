@@ -35,7 +35,7 @@ syn_read_text("A short tale. It has two sentences.", lang = "en")
 \seealso{
 \code{\link[=syn_score]{syn_score()}} for the next step.
 
-Other reading functions: 
-\code{\link{syn_example_text}()}
+Other reading functions:
+\code{\link[=syn_example_text]{syn_example_text()}}
 }
 \concept{reading functions}

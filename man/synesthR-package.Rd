@@ -6,7 +6,7 @@
 \alias{synesthR-package}
 \title{synesthR: Generate Synchronized Images and Music from Literary Text}
 \description{
-\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+\if{html}{\figure{logo.svg}{options: style='float: right' alt='logo' width='120'}}
 
 Extracts linguistic features from literary text in German, English, and French, including a sentence-level sentiment arc, lexical diversity, rhythm, and punctuation density, and maps them deterministically onto visual and musical parameters. From a single shared feature score it renders a generative still image and a synchronized audio waveform, so that the picture and the music are two views of the same analysis. Colour palettes and 'ggplot2' themes can be extracted not only from text but from images and audio through a common interface, and media objects (text, image, audio, score) are passed between functions through a shared interchange container. An optional assistive layer can interpret results using a locally running large language model.
 }
@@ -20,7 +20,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Raban Heller \email{raban.heller@charite.de} (\href{https://orcid.org/0000-0001-8006-9742}{ORCID})
+\strong{Maintainer}: Raban Heller \email{raban.heller@uni-ulm.de} (\href{https://orcid.org/0000-0001-8006-9742}{ORCID})
+
+Authors:
+\itemize{
+  \item Raban Heller \email{raban.heller@uni-ulm.de} (\href{https://orcid.org/0000-0001-8006-9742}{ORCID})
+}
 
 }
 \keyword{internal}
