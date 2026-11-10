@@ -1,8 +1,8 @@
 Package: synesthR
 Title: Generate Synchronized Images and Music from Literary Text
 Version: 0.2.0
-Authors@R: person("Raban", "Heller", email = "raban.heller@uni-ulm.de",
-    role = c("aut", "cre"), comment = c(ORCID = "0000-0001-8006-9742"))
+Authors@R: person("R.", "Heller", email = "raban.heller@uni-ulm.de",
+    role = c("aut", "cre", "cph"), comment = c(ORCID = "0000-0001-8006-9742"))
 Description: Extracts linguistic features from literary text in German, English,
     and French, including a sentence-level sentiment arc, lexical diversity,
     rhythm, and punctuation density, and maps them deterministically onto
