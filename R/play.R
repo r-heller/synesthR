@@ -88,6 +88,8 @@ syn_play <- function(score, sample_rate = .SAMPLE_RATE) {
 #' @examples
 #' wav <- tempfile(fileext = ".wav")
 #' syn_write_wav(syn_score(syn_read_text("Two words.", lang = "en")), wav)
+#' file.exists(wav)
+#' unlink(wav)
 #' @export
 syn_write_wav <- function(score, path, overwrite = FALSE, sample_rate = .SAMPLE_RATE) {
   .check_class(score, "prosody_score")

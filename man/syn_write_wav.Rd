@@ -24,6 +24,8 @@ Write a prosody_score's audio to a .wav file
 \examples{
 wav <- tempfile(fileext = ".wav")
 syn_write_wav(syn_score(syn_read_text("Two words.", lang = "en")), wav)
+file.exists(wav)
+unlink(wav)
 }
 \seealso{
 Other rendering functions:
