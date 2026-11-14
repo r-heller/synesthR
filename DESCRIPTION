@@ -43,7 +43,7 @@ Suggests:
     seewave,
     shiny,
     soundgen,
-    testthat (>= 3.0.0),
+    testthat (>= 3.1.7),
     withr
 VignetteBuilder: knitr
 Config/Needs/website: CTTIR/themakR@a4e4805ac89194d766694bfc0ec544fa5517ac59
